@@ -1,11 +1,8 @@
 
 import React, {Component} from 'react';
 import './App.css';
-import Dashboard from './components/Dashboard/Dashboard'
-import Header from './components/Header/Header'
-import House from './components/House/House'
-import Wizard from'./components/Wizard/Wizard'
 import routes from'./router'
+import { HashRouter, Link } from "react-router-dom";
 
 class App extends Component{
   constructor() {
@@ -18,13 +15,13 @@ class App extends Component{
   }
   render (){
   return (
+    <HashRouter>
     <div className="App">
-      <Header/>
-      <Dashboard>
-        <Wizard>Wizard</Wizard>
-      </Dashboard>
-      <House/>  
+      <Link to="/Dashboard" className="links"> dashboard
+      </Link>
+      {routes}
     </div>
+    </HashRouter>
   );
 }
 }
