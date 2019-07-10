@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+import React, {Component} from 'react';
+import './App.css';
+import Dashboard from './components/Dashboard/Dashboard'
+import Header from './components/Header/Header'
+import House from './components/House/House'
+import Wizard from'./components/Wizard/Wizard'
+import routes from'./router'
+
+class App extends Component{
+  constructor() {
+    super()
+    this.state = {
+      product: [],
+      i: 0
+    };
+    
+  }
+  render (){
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header/>
+      <Dashboard>
+        <Wizard>Wizard</Wizard>
+      </Dashboard>
+      <House/>  
     </div>
   );
 }
-
+}
 export default App;
