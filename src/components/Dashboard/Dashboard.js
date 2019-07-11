@@ -1,27 +1,32 @@
 import React, { Component } from 'react'
 import { Link } from "react-router-dom";
 import House from '../House/House'
+import axios from 'axios';
 class Dashboard extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            houses: []
+            houses: [],
+            housesMapped: []
         }
     };
+    
+    componentDidMount () {
+    axios
+     .get('/api/houses')
+      .then(res => {
+        console.log('res db response', res)
+        this.setState({houses: res.data})
+        console.log('houses data', this.state.houses)
+      })
+      }
 
-    componentDidUpdate(prevProps, prevState) {
-        offscreenBuffering(prevProps.product !== this.state.houses){
-            this.setState({
-                houses: this.props.houses
-            })
-            this.render()
-        }
-    }
+
 
     render() {
         console.log(this.state.inventory)
-        const mappedHouses = this.state.houses.length ? this.state.houses.map(house => {
-            return <House house={house} key={house.id} updateHouses={this.props.updateHouses} />
+        const mappedHouses = this.state.housesMapped.length ? this.state.housesMapped.map(houses => {
+            return <House houses={houses} key={houses.id} updateHouses={this.props.updateHouses} />
         }) : console.log('test false')
         return (
             <div className="dash-container">
