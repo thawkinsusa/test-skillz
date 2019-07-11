@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import './App.css';
 import routes from'./router'
 import { HashRouter, Link } from "react-router-dom";
-
+import Header from './components/Header/Header'
 class App extends Component{
   constructor() {
     super()
@@ -17,8 +17,10 @@ class App extends Component{
   return (
     <HashRouter>
     <div className="App">
-      <Link to="/Dashboard" className="links"> dashboard
+      <Header />
+      <Link to="/Dashboard" className="links">
       </Link>
+    
       {routes}
     </div>
     </HashRouter>

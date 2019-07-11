@@ -8,7 +8,8 @@ import Wizard from'./components/Wizard/Wizard'
 export default (
     <div>
         <Switch>
-            <Route component = {Dashboard} exact path='/Dashboard'/>
+            <Route component = {Dashboard} exact path='/'/>
+            <Route component = {Wizard} path= '/Wizard'/>
         </Switch>
     </div>
 )
