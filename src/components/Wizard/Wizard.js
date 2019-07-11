@@ -1,8 +1,20 @@
 import React, { Component } from 'react'
 import { Link } from "react-router-dom";
 class Wizard extends Component {
-    constructor(props) {
-        super(props)
+    constructor() {
+        super()
+        this.state={
+            propertyName: '',
+            address: '',
+            city: '',
+            state: '',
+            zipcode: ''
+        }
+    };
+
+    handleChange = e => {
+        let { name, value } = e.target
+        this.setState({ [name]: value })
     };
     
     render() {
@@ -15,13 +27,13 @@ class Wizard extends Component {
                 </button>
                 </div>
                 <div className='wizard-edit'>
-                <p>Property Name</p>
-                <p>Address</p>
+                <p>Property Name:<input value={this.state.propertyName} onChange={this.handleChange}/></p>
+                <p>Address:<input value={this.state.address} onChange={this.handleChange}/></p>
                 </div>
                 <div className='wizard-lower-three'>
-                    <p>City</p>
-                    <p>State</p>
-                    <p>Zip</p>
+                    <p>City:<input value={this.state.city} onChange={this.handleChange}/></p>
+                    <p>State:<input value={this.state.state} onChange={this.handleChange}/></p>
+                    <p>Zipcode:<input value={this.state.zipcode} onChange={this.handleChange}/></p>
                 </div>
                     <div className='wizard-lower-button'><button>Complete</button></div>
             </div>

@@ -1,6 +1,6 @@
 require('dotenv').config(__dirname + '../.env')
 const express = require('express')
-const controller = require('./controller.js')
+const hc = require('./HouseController/controller.js')
 const session = require('express-session')
 const massive = require('massive')
 const {
@@ -18,6 +18,9 @@ app.use(
         saveUninitialized: true,
     })
 )
+
+app.get('/api/house/:id', hc.getOne)
+app.get('/api/houses', hc.getAll)
 
 massive(CONNECTION_STRING)
     .then(db => {
