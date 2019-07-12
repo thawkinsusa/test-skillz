@@ -21,10 +21,11 @@ app.use(
 
 app.get('/api/house/:id', hc.getOne)
 app.get('/api/houses', hc.getAll)
+app.post('/api/houses', hc.create)
 
 massive(CONNECTION_STRING)
-    .then(db => {
-        app.set('db', db);
+    .then(dbInstance => {
+        app.set('db', dbInstance);
         app.listen(SERVER_PORT, (res, req) => {
             console.log(`Listening on port ${SERVER_PORT}`);
         });

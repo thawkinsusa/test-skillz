@@ -1,2 +1,2 @@
-insert into houses (property, address, city, state, zipcode) 
-VALUES($1, $2, $3, $4, $5);
+INSERT INTO houses (property, address, CITY, STATE, zipcode)
+VALUES($1, $2, $3, $4, $5)
